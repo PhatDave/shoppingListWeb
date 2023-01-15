@@ -1,9 +1,13 @@
 <script>
 import API from './ShoppingListAPI'
 import ShoppingListItem from "./ShoppingListItem.vue";
+import ShoppingListCategoryTabs from "./ShoppingListCategoryTabs.vue";
 
 export default {
-	components: {ShoppingListItem},
+	components: {
+		ShoppingListItem,
+		ShoppingListCategoryTabs
+	},
 	data() {
 		return {
 			entries: [],
@@ -23,9 +27,15 @@ export default {
 			API.removeItem(item).then(() => {
 				this.entries = this.entries.filter(entry => entry !== item);
 			});
+		},
+		async applyCategory(appliedCategories) {
+			if (appliedCategories.length === 0) {
+				this.entries = await API.getAll();
+			} else {
+				this.entries = await API.getAllByCategories(appliedCategories);
+			}
 		}
 	},
-
 	async beforeMount() {
 		this.entries = await API.getAll();
 	},
@@ -33,11 +43,12 @@ export default {
 </script>
 
 <template>
+	<ShoppingListCategoryTabs @apply-category="applyCategory"/>
 	<div class="listContainer">
 		<ShoppingListItem v-for="entry in entries" :item="entry" @remove-item="removeItem"/>
 	</div>
 	<div class="inputContainer">
-		<input type="text" id="itemEntry" ref="itemEntry" placeholder="Item yes" @keydown="postItem">
+		<input type="text" id="itemEntry" ref="itemEntry" placeholder="Item yes" @keydown="postItem" autofocus>
 	</div>
 </template>
 
@@ -49,6 +60,7 @@ export default {
 	flex: 1;
 	align-content: space-evenly;
 }
+
 .listContainer * {
 	padding: 5px;
 }
@@ -58,6 +70,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 }
+
 #itemEntry {
 	width: 99%;
 	position: fixed;

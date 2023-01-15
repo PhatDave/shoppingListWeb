@@ -23,6 +23,7 @@ export default {
 	<div class="item">
 		<span class="size-1">{{ item.id }}</span>
 		<span class="size-4">{{ item.content }}</span>
+		<span class="size-2">{{ item.category }}</span>
 		<span class="size-2">{{ relativeTime }}</span>
 		<span class="size-1 deleteButton" @click="removeItem">DELETE</span>
 	</div>

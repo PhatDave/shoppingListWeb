@@ -10,7 +10,7 @@ export default {
 			xhr.send();
 			xhr.onload = function() {
 				let items = JSON.parse(this.responseText);
-				console.log(items);
+				items.forEach(item => item.date = new Date(item.date));
 				resolve(items);
 			}
 		});
@@ -24,7 +24,6 @@ export default {
 			xhr.send(JSON.stringify({content: data}));
 			xhr.onload = function() {
 				let item = JSON.parse(this.responseText);
-				console.log(item);
 				resolve(item);
 			};
 		});

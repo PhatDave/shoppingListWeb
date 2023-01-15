@@ -1,4 +1,6 @@
 <script>
+import Utils from "../Utils";
+
 export default {
 	emits: ['remove-item'],
 	props: {
@@ -8,6 +10,11 @@ export default {
 		removeItem() {
 			this.$emit('remove-item', this.item);
 		}
+	},
+	computed: {
+		relativeTime() {
+			return Utils.relativizeTime(this.item.date);
+		}
 	}
 }
 </script>
@@ -16,7 +23,7 @@ export default {
 	<div class="item">
 		<span class="size-1">{{ item.id }}</span>
 		<span class="size-4">{{ item.content }}</span>
-		<span class="size-2">{{ item.date }}</span>
+		<span class="size-2">{{ relativeTime }}</span>
 		<span class="size-1 deleteButton" @click="removeItem">DELETE</span>
 	</div>
 </template>

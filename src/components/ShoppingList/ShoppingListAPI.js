@@ -2,40 +2,52 @@ const API_URL = `http://5.75.185.206:8080/shoppingList`;
 
 export default {
 	getAll() {
-		return new Promise(resolve => {
+		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open("GET", API_URL);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.setRequestHeader("Accept", "application/json");
 			xhr.send();
 			xhr.onload = function() {
-				let items = JSON.parse(this.responseText);
-				items.forEach(item => item.date = new Date(item.date));
-				resolve(items);
+				if (this.status === 200) {
+					let items = JSON.parse(this.responseText);
+					items.forEach(item => item.date = new Date(item.date));
+					resolve(items);
+				} else {
+					reject(this.responseText);
+				}
 			}
 		});
 	},
 	postItem(data) {
-		return new Promise(resolve => {
+		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open("POST", API_URL);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.setRequestHeader("Accept", "application/json");
 			xhr.send(JSON.stringify({content: data}));
 			xhr.onload = function() {
-				let item = JSON.parse(this.responseText);
-				resolve(item);
+				if (this.status === 200) {
+					let item = JSON.parse(this.responseText);
+					resolve(item);
+				} else {
+					reject(this.responseText);
+				}
 			};
 		});
 	},
-	removeItem(item) {		return new Promise(resolve => {
-		const xhr = new XMLHttpRequest();
-		xhr.open("DELETE", API_URL + `/${item.id}`);
-		xhr.send("");
-		xhr.onload = function() {
-			resolve();
-		};
-	});
-
+	removeItem(item) {
+		return new Promise((resolve, reject) => {
+			const xhr = new XMLHttpRequest();
+			xhr.open("DELETE", API_URL + `/${item.id}`);
+			xhr.send("");
+			xhr.onload = function() {
+				if (this.status === 200) {
+					resolve();
+				} else {
+					reject();
+				}
+			};
+		});
 	}
 };

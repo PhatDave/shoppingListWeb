@@ -28,11 +28,9 @@ export default {
 	},
 	methods: {
 		changeTab(newTab) {
-			console.log(newTab);
 			this.activeTab = newTab;
 		}
 	},
-
 	async beforeMount() {
 	},
 }

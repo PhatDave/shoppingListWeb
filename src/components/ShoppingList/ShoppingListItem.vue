@@ -1,5 +1,5 @@
 <script>
-import Utils from "../Utils";
+import Utils from "../../Utils";
 
 export default {
 	emits: ['remove-item'],

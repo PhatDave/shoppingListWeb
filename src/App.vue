@@ -1,66 +1,66 @@
 <script>
-import API from './ShoppingListAPI.js';
-import ShoppingListItem from "./components/ShoppingListItem.vue";
+import ShoppingListItem from "./components/ShoppingList/ShoppingListItem.vue";
+import ShoppingListComponent from "./components/ShoppingList/ShoppingListComponent.vue";
+import TodoListComponent from "./components/TodoList/TodoListComponent.vue";
+import {shallowRef} from "vue";
 
 export default {
-	components: {ShoppingListItem},
+	components: {
+		ShoppingListComponent,
+		ShoppingListItem
+	},
 	data() {
 		return {
-			entries: [],
+			tabs: [
+				{
+					index: 0,
+					name: "Shopping List",
+					component: shallowRef(ShoppingListComponent)
+				},
+				{
+					index: 1,
+					name: "Todo List",
+					component: shallowRef(TodoListComponent)
+				}
+			],
+			activeTab: 0,
 		}
 	},
 	methods: {
-		async postItem(key) {
-			if (key.which === 13) {
-				let data = this.$refs.itemEntry.value;
-				API.postItem(data).then(item => {
-					this.entries.push(item);
-					this.$refs.itemEntry.value = '';
-				});
-			}
-		},
-		async removeItem(item) {
-			API.removeItem(item).then(() => {
-				this.entries = this.entries.filter(entry => entry !== item);
-			});
+		changeTab(newTab) {
+			console.log(newTab);
+			this.activeTab = newTab;
 		}
 	},
 
 	async beforeMount() {
-		this.entries = await API.getAll();
 	},
 }
 </script>
 
 <template>
-	<div class="listContainer">
-		<ShoppingListItem v-for="entry in entries" :item="entry" @remove-item="removeItem"/>
+	<div class="tabContainer">
+		<div v-for="tab in tabs" :class="{tab, activeTab: tab.index === this.activeTab}" @click="changeTab(tab.index)">
+			{{ tab.name }}
+		</div>
 	</div>
-	<div class="inputContainer">
-		<input type="text" id="itemEntry" ref="itemEntry" placeholder="Item yes" @keydown="postItem">
-	</div>
+	<Component :is="tabs[activeTab].component" />
 </template>
 
 <style scoped>
-.listContainer {
+.tabContainer {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	flex: 1;
-	align-content: space-evenly;
+	flex-direction: row;
+	justify-content: space-evenly;
 }
 
-.inputContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.tab {
+	border: 2px solid white;
+	width: 100%;
+	text-align: center;
 }
-#itemEntry {
-	width: 99%;
-	position: fixed;
-	bottom: 0;
-	height: 50px;
-	padding: 10px;
-	font-size: 32px;
+
+.activeTab {
+	border: 2px solid deeppink;
 }
 </style>

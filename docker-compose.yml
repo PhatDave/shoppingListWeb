@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  ShoppingListWeb:
+    image: phatphuckdave/shoppinglistweb
+    container_name: ShoppingListWeb
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"

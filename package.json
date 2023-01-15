@@ -14,7 +14,7 @@
 		"electron:builder": "electron-builder",
 		"build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
 		"app:build": "yarn build:for:electron && yarn electron:builder",
-		"pkg:server": "pkg server.js --target node14-win-x64 --output server.exe"
+		"pkg:server": "pkg server.js --target node16-linux-x64 --output server.exe"
 	},
 	"dependencies": {
 		"vue": "^3.2.45"

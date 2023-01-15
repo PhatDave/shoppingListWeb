@@ -1,5 +1,5 @@
 {
-	"name": "vue-tutorial-electron",
+	"name": "shopping-list-web",
 	"author": "CykaDave",
 	"private": true,
 	"version": "0.0.0",
@@ -29,8 +29,8 @@
 		"wait-on": "^7.0.1"
 	},
 	"build": {
-		"appId": "hr.cyka.vue-tutorial-electron",
-		"productName": "Vue Tutorial",
+		"appId": "hr.cyka.shopping-list-web",
+		"productName": "Shopping List",
 		"nsis": {
 			"oneClick": false,
 			"allowToChangeInstallationDirectory": true

@@ -9,6 +9,12 @@ export default {
 	methods: {
 		removeItem() {
 			this.$emit('remove-item', this.item);
+		},
+    selectAll(event) {
+      let range = document.createRange();
+      range.selectNode(event.target);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
 		}
 	},
 	computed: {
@@ -20,7 +26,7 @@ export default {
 </script>
 
 <template>
-	<div class="item">
+	<div class="item selectable" @click="selectAll">
 		<span class="size-1">{{ item.id }}</span>
 		<span class="size-4">{{ item.content }}</span>
 		<span class="size-2">{{ relativeTime }}</span>

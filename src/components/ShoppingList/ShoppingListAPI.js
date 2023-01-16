@@ -83,6 +83,7 @@ export default {
 				let category = categories[i];
 				let request = this.getAllByCategory(category);
 				request.then(responseItems => {
+					responseItems.forEach(item => item.date = new Date(item.date));
 					responseItems.forEach(item => items.push(item));
 				});
 				promises.push(request);

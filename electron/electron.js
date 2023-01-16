@@ -38,3 +38,12 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
+
+process.on('message', data => {
+	if (data === 'graceful-exit') {
+		app.quit()
+	}
+});
+process.on('SIGTERM', () => {
+	app.quit()
+});

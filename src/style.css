@@ -4,5 +4,12 @@
   font-size: 1.5rem;
   position: relative;
   font-family: 'Nunito', sans-serif;
+}
+
+.unselectable {
   user-select: none;
+}
+
+.selectable {
+  user-select: text;
 }

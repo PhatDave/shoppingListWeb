@@ -42,17 +42,6 @@ export default {
 </template>
 
 <style scoped>
-.listContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	flex: 1;
-	align-content: space-evenly;
-}
-.listContainer * {
-	padding: 5px;
-}
-
 .inputContainer {
 	display: flex;
 	flex-direction: column;

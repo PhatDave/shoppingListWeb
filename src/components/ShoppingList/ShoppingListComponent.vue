@@ -2,9 +2,11 @@
 import API from './ShoppingListAPI'
 import ShoppingListItem from "./ShoppingListItem.vue";
 import ShoppingListCategoryTabs from "./ShoppingListCategoryTabs.vue";
+import HeaderTabs from "@/HeaderTabs.vue";
 
 export default {
 	components: {
+		HeaderTabs,
 		ShoppingListItem,
 		ShoppingListCategoryTabs
 	},
@@ -43,6 +45,7 @@ export default {
 </script>
 
 <template>
+	<HeaderTabs/>
 	<ShoppingListCategoryTabs @apply-category="applyCategory"/>
 	<div class="listContainer">
 		<ShoppingListItem v-for="entry in entries" :item="entry" @remove-item="removeItem"/>
@@ -62,7 +65,6 @@ export default {
 	flex-direction: column;
 	align-items: center;
 }
-
 #itemEntry {
 	width: 99%;
 	position: fixed;

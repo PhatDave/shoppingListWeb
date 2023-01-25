@@ -17,16 +17,17 @@
 		"pkg:server": "pkg server.js --target node16-linux-x64 --output server.exe"
 	},
 	"dependencies": {
-		"vue": "^3.2.45"
+		"vue": "^3.2.45",
+		"vue-router": "^4.1.6"
 	},
 	"devDependencies": {
-		"serve-static": "^1.15.0",
 		"@vitejs/plugin-vue": "^4.0.0",
 		"concurrently": "^7.6.0",
 		"cross-env": "^7.0.3",
 		"electron": "^22.0.2",
 		"electron-builder": "^23.6.0",
 		"express": "^4.18.2",
+		"serve-static": "^1.15.0",
 		"vite": "^4.0.0",
 		"vue-tsc": "^1.0.24",
 		"wait-on": "^7.0.1"

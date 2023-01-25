@@ -45,9 +45,11 @@ export default {
 
 <style scoped>
 .tabContainer {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
+	display: grid;
+	justify-items: stretch;
+}
+.tabContainer * {
+	grid-row: 1;
 }
 
 .tab {
@@ -55,7 +57,6 @@ export default {
 	width: 100%;
 	text-align: center;
 }
-
 .activeTab {
 	border: 2px solid deeppink;
 }

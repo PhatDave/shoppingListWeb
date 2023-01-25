@@ -1,9 +1,10 @@
 <script>
 import API from './TodoListAPI.js';
 import TodoItem from './TodoListItem.vue';
+import HeaderTabs from "@/HeaderTabs.vue";
 
 export default {
-	components: {TodoItem},
+	components: {TodoItem, HeaderTabs},
 	data() {
 		return {
 			entries: [],
@@ -33,6 +34,7 @@ export default {
 </script>
 
 <template>
+	<HeaderTabs/>
 	<div class="listContainer">
 		<TodoItem v-for="entry in entries" :item="entry" @remove-item="removeItem"/>
 	</div>
@@ -47,6 +49,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 }
+
 #itemEntry {
 	width: 99%;
 	position: fixed;

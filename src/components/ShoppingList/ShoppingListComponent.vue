@@ -60,17 +60,26 @@ export default {
 	padding: 5px;
 }
 
+.listContainer {
+	margin-bottom: 10vh;
+}
+
 .inputContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-#itemEntry {
-	width: 99%;
 	position: fixed;
 	bottom: 0;
-	height: 50px;
+	left: 0;
+	width: 100%;
+	height: 10vh;
+}
+
+#itemEntry {
+	height: 15vh;
+	width: 99%;
 	padding: 10px;
 	font-size: 32px;
 }
+
 </style>

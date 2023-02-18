@@ -4,7 +4,10 @@ import TodoItem from './TodoListItem.vue';
 import HeaderTabs from "@/HeaderTabs.vue";
 
 export default {
-	components: {TodoItem, HeaderTabs},
+	components: {
+		TodoItem,
+		HeaderTabs
+	},
 	data() {
 		return {
 			entries: [],
@@ -44,17 +47,24 @@ export default {
 </template>
 
 <style scoped>
+.listContainer {
+	margin-bottom: 15vh;
+}
+
 .inputContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 15vh;
 }
 
 #itemEntry {
+	height: 15vh;
 	width: 99%;
-	position: fixed;
-	bottom: 0;
-	height: 50px;
 	padding: 10px;
 	font-size: 32px;
 }

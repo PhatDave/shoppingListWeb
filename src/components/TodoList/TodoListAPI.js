@@ -1,4 +1,4 @@
-const API_URL = `http://5.75.185.206:8080/todo`;
+const API_URL = `http://www.cyka.info:8080/todo`;
 
 export default {
 	getAll() {

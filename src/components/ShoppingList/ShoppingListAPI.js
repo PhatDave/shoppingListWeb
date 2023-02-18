@@ -1,4 +1,4 @@
-const API_URL = `http://5.75.185.206:8080/shoppingList`;
+const API_URL = `http://www.cyka.info:8080/shoppingList`;
 
 export default {
 	getAll() {

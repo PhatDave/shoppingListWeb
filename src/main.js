@@ -7,17 +7,17 @@ import './style.css';
 
 const routes = [
 	{
-		path: '/',
-		redirect: '/shop'
-	},
-	{
 		path: '/shop',
 		component: ShoppingListComponent
 	},
 	{
 		path: '/todo',
 		component: TodoListComponent
-	}
+	},
+	{
+		path: '/:any*',
+		redirect: '/shop'
+	},
 ]
 
 const router = createRouter({
